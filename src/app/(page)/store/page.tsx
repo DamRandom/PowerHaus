@@ -1,28 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { Product } from "@/types/Product";
+import { products } from "@/data/Products"; 
 
 export default function StorePage() {
-  const products: Product[] = [
-    {
-      id: 1,
-      name: 'Smart Refrigerator',
-      description: 'Energy-efficient refrigerator with smart features.',
-      price: '$999.99',
-      imageUrl: '/images/refrigerator.jpg',
-    },
-    {
-      id: 2,
-      name: 'High-Efficiency Washing Machine',
-      description: 'Powerful washing machine with multiple modes.',
-      price: '$799.99',
-      imageUrl: '/images/washing-machine.jpg',
-    },
-  ];
-
   return (
-    <div className="h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 bg-[#DADCE1] text-[#262520] p-8">
         <div className="container mx-auto">

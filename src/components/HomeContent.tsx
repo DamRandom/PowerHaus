@@ -26,7 +26,7 @@ export default function HomeContent() {
               </p>
               {/* Botón a la tienda */}
               <a
-                href="#store"
+                href="/store"
                 className="inline-block mt-2 px-6 py-2 bg-[#596766] text-white rounded-lg text-center hover:bg-[#ABC1BB]"
               >
                 Visit Our Store
