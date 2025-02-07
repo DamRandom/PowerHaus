@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/Products"; 
+import { products } from "@/data/Products";
+import Link from "next/link";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 export default function StorePage() {
   return (
@@ -18,6 +20,13 @@ export default function StorePage() {
         </div>
       </main>
       <Footer />
+
+      {/* Botón flotante del carrito */}
+      <Link href="/cart">
+        <div className="fixed bottom-6 right-6 bg-[#596766] text-white p-4 rounded-full shadow-lg hover:bg-[#ABC1BB] transition cursor-pointer">
+          <ShoppingCartIcon className="w-6 h-6" />
+        </div>
+      </Link>
     </div>
   );
 }
