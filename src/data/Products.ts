@@ -179,7 +179,7 @@ export const products: Product[] = [
     name: "Samsung Galaxy Tab S10 Ultra Gray 256GB - AI Tablet, 14.6\", AMOLED 2X, Anti-Reflection, 420 Nits, Vapor Chamber, S Pen Included (CAD Version & Warranty)",
     description: "14.6-inch Dynamic AMOLED 2X tablet with AI-powered features, S Pen included, and IP68 durability. Perfect for work and creativity on the go.",
     price: "$1,249.99",
-    imageUrl: "/images/galaxy-tab-s10-ultra.jpg", // Asegúrate de agregar esta imagen en tu carpeta de imágenes
+    imageUrl: "/images/galaxy-tab-s10-ultra.jpg",
     brand: "Samsung",
     modelName: "Galaxy Tab S10 Ultra",
     rating: 4.3,

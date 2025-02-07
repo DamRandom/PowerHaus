@@ -44,7 +44,7 @@ export default function StorePage() {
       <Footer />
 
       {/* Botón flotante del carrito con ajuste al footer */}
-      <Link href="/cart">
+      <Link href="/shopping-cart">
         <div
           className={`fixed right-6 bg-[#596766] text-white p-4 rounded-full shadow-lg hover:bg-[#ABC1BB] transition cursor-pointer ${
             isAtFooter ? "bottom-[120px]" : "bottom-6"
