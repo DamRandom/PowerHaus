@@ -4,9 +4,11 @@ import { Product } from "@/types/Product";
 
 interface ProductCardProps {
   product: Product;
+  onAddToCart: (product: Product) => void;
+  isAdded: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, onAddToCart, isAdded }: ProductCardProps) {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col items-center h-full">
       {/* Imagen del producto */}
@@ -33,8 +35,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className="text-xl font-bold mt-2">{product.price}</p>
 
         {/* Botón de añadir al carrito */}
-        <button className="mt-4 w-full bg-[#596766] text-white py-2 rounded-lg hover:bg-[#ABC1BB] transition-colors">
-          Add to Cart
+        <button
+          onClick={() => onAddToCart(product)}
+          className={`mt-4 w-full py-2 rounded-lg transition-colors ${isAdded ? 'bg-[#ABC1BB] cursor-not-allowed' : 'bg-[#596766] text-white hover:bg-[#ABC1BB]'}`}
+          disabled={isAdded} // Deshabilitar el botón si el producto ya está en el carrito
+        >
+          {isAdded ? "Added" : "Add to Cart"}
         </button>
       </div>
     </div>

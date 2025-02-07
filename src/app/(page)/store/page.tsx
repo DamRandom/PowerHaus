@@ -1,4 +1,3 @@
-'use effect'
 'use client'
 
 import { useState, useEffect } from "react";
@@ -8,9 +7,35 @@ import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/Products";
 import Link from "next/link";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { Product } from "@/types/Product";
 
 export default function StorePage() {
+  const [cartItems, setCartItems] = useState<Product[]>([]);
   const [isAtFooter, setIsAtFooter] = useState(false);
+
+  // Cargar productos del carrito desde localStorage al montar el componente
+  useEffect(() => {
+    const savedCartItems = localStorage.getItem("cartItems");
+    if (savedCartItems) {
+      setCartItems(JSON.parse(savedCartItems));
+    }
+  }, []);
+
+  // Guardar productos en el carrito en localStorage cada vez que cambie el carrito
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    } else {
+      localStorage.removeItem("cartItems"); // Si el carrito está vacío, eliminarlo de localStorage
+    }
+  }, [cartItems]);
+
+  const handleAddToCart = (product: Product) => {
+    // Evitar duplicados en el carrito
+    if (!cartItems.some(item => item.id === product.id)) {
+      setCartItems((prevItems) => [...prevItems, product]);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +60,12 @@ export default function StorePage() {
           <h1 className="text-3xl font-semibold mb-6">Our Products</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard 
+                key={product.id} 
+                product={product} 
+                onAddToCart={handleAddToCart}
+                isAdded={cartItems.some(item => item.id === product.id)} // Verificar si ya está añadido al carrito
+              />
             ))}
           </div>
         </div>
