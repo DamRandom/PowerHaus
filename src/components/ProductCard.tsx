@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col items-center">
+    <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col items-center h-full">
       {/* Imagen del producto */}
       <Link href={`/store/${product.id}`} className="w-full flex justify-center">
         <div className="relative w-40 h-56 cursor-pointer">
@@ -23,7 +23,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </Link>
 
       {/* Información del producto */}
-      <div className="p-4 text-center">
+      <div className="p-4 flex flex-col justify-between flex-grow">
         <Link href={`/store/${product.id}`}>
           <h2 className="text-lg font-semibold cursor-pointer hover:text-[#596766] transition-colors">
             {product.name}

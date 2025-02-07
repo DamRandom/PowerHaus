@@ -43,12 +43,42 @@ export default function ProductPage({ params }: ProductPageProps) {
             {/* Detalles adicionales */}
             <ul className="space-y-2 text-gray-800">
               <li><strong>Brand:</strong> {product.brand}</li>
-              <li><strong>Operating System:</strong> {product.operatingSystem}</li>
-              <li><strong>RAM:</strong> {product.ram}</li>
-              <li><strong>Storage:</strong> {product.storage}</li>
-              <li><strong>Screen Size:</strong> {product.screenSize}&apos;</li>
-              <li><strong>Processor:</strong> {product.cpuModel}</li>
-              <li><strong>Cellular:</strong> {product.cellularTechnology}</li>
+
+              {/* Mostrar solo si las propiedades están presentes */}
+              {product.operatingSystem && (
+                <li><strong>Operating System:</strong> {product.operatingSystem}</li>
+              )}
+              {product.ram && (
+                <li><strong>RAM:</strong> {product.ram}</li>
+              )}
+              {product.storage && (
+                <li><strong>Storage:</strong> {product.storage}</li>
+              )}
+              {product.screenSize && (
+                <li><strong>Screen Size:</strong> {product.screenSize}&apos;</li>
+              )}
+              {product.cpuModel && (
+                <li><strong>Processor:</strong> {product.cpuModel}</li>
+              )}
+              {product.cellularTechnology && (
+                <li><strong>Cellular:</strong> {product.cellularTechnology}</li>
+              )}
+              {/* Nuevas propiedades para productos como el Roborock */}
+              {product.surfaceRecommendation && (
+                <li><strong>Surface Recommendation:</strong> {product.surfaceRecommendation}</li>
+              )}
+              {product.specialFeatures && (
+                <li><strong>Special Features:</strong> {product.specialFeatures.join(', ')}</li>
+              )}
+              {product.color && (
+                <li><strong>Color:</strong> {product.color}</li>
+              )}
+              {product.dimensions && (
+                <li><strong>Dimensions:</strong> {product.dimensions}</li>
+              )}
+              {product.batteryLife && (
+                <li><strong>Battery Life:</strong> {product.batteryLife}</li>
+              )}
             </ul>
 
             {/* Botón de compra */}

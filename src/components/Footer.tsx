@@ -2,7 +2,9 @@ import { FaInstagram, FaFacebook } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#DADCE1] text-[#262520] p-4 flex justify-between items-center shadow-md shadow-[#262520]">
+    <footer
+      id='footer'
+      className="w-full bg-[#DADCE1] text-[#262520] p-4 flex justify-between items-center shadow-md shadow-[#262520]">
       {/* Columna izquierda: nombre del negocio y eslogan */}
       <div className="flex flex-col space-y-1">
         <h1 className="text-xl font-semibold">PowerHaus</h1>
