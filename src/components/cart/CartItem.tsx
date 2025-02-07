@@ -8,7 +8,7 @@ interface CartItemProps {
 
 export function CartItem({ product, onRemove }: CartItemProps) {
   return (
-    <div className="flex justify-between items-center mb-4 border-b pb-4">
+    <div className="flex justify-between items-center mb-6 border-b pb-6">
       <div className="flex items-center">
         <Image
           src={product.imageUrl}
@@ -18,9 +18,9 @@ export function CartItem({ product, onRemove }: CartItemProps) {
           className="object-cover rounded-lg mr-4"
         />
         <div>
-          <h3 className="font-semibold">{product.name}</h3>
-          <p className="text-sm text-gray-500">{product.description}</p>
-          <p className="text-lg font-bold mt-2">{product.price}</p>
+          <h3 className="font-semibold text-[#262520]">{product.name}</h3>
+          <p className="text-sm text-[#595959]">{product.description}</p>
+          <p className="text-lg font-bold mt-2 text-[#262520]">{product.price}</p>
         </div>
       </div>
       <button
