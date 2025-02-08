@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react"; // Importamos los iconos de Lucide
 
 interface FilterProps {
   categories: string[];
@@ -14,13 +15,13 @@ export default function Filters({ categories, onCategorySelect, onClearFilters }
   return (
     <div className="bg-tertiary px-6 py-4 mb-8">
       {/* Tarjeta de Filtros */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+      <div className="bg-white p-4 rounded-lg shadow-md mb-6">
         {/* Filtro superior */}
-        <div className="flex justify-between items-center pb-4">
-          <h2 className="text-2xl font-semibold text-foreground">Filters:</h2>
+        <div className="flex justify-between items-center border-b pb-2">
+          <h2 className="text-lg font-medium text-gray-700">Filters</h2>
           <button
             onClick={onClearFilters}
-            className="text-secondary hover:text-primary transition duration-300"
+            className="text-[#ABC1BB] hover:text-[#7C9E97] transition duration-300 text-sm font-medium"
           >
             Remove All
           </button>
@@ -28,34 +29,32 @@ export default function Filters({ categories, onCategorySelect, onClearFilters }
       </div>
 
       {/* Tarjeta de Categorías */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h3 className="text-xl font-semibold text-foreground mb-4">Category</h3>
-        <div className="relative">
-          <button
-            onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-            className="w-full text-left px-4 py-2 border border-tertiary rounded-md focus:outline-none"
-          >
-            Select Category
-          </button>
-          {isCategoryOpen && (
-            <div className="absolute left-0 w-full mt-2 bg-white border border-tertiary rounded-lg shadow-lg z-10">
-              <ul className="max-h-60 overflow-y-auto">
-                {categories.map((category, index) => (
-                  <li
-                    key={index}
-                    onClick={() => {
-                      onCategorySelect(category);
-                      setIsCategoryOpen(false); // Cerrar el dropdown después de seleccionar
-                    }}
-                    className="cursor-pointer hover:bg-secondary p-2 px-4 text-foreground"
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+      <div className="bg-white p-4 rounded-lg shadow-md">
+        <button
+          onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+          className="w-full flex justify-between items-center text-lg font-semibold text-gray-800 focus:outline-none"
+        >
+          Category
+          {isCategoryOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </button>
+        {isCategoryOpen && (
+          <div className="mt-2 bg-white border border-gray-300 rounded-lg shadow-lg">
+            <ul className="max-h-60 overflow-y-auto">
+              {categories.map((category, index) => (
+                <li
+                  key={index}
+                  onClick={() => {
+                    onCategorySelect(category);
+                    setIsCategoryOpen(false); // Cerrar el dropdown después de seleccionar
+                  }}
+                  className="cursor-pointer hover:bg-[#ABC1BB] p-2 px-4 text-gray-800"
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
