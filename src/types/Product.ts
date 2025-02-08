@@ -17,6 +17,7 @@ export interface Product {
   rating: number;
   material?: string;
   weight?: string;
+  type?: string;
   amperage?: string;
   frequencyRange?: string;
   maximumPower?: string;

@@ -5,6 +5,7 @@ export const products: Product[] = [
     id: 1,
     name: "Apple iPhone 12 Pro Max, 128GB, Graphite - Unlocked (Renewed)",
     description: "Fully unlocked, renewed iPhone 12 Pro Max with 128GB storage.",
+    type: "Smartphone",
     price: "$609.00",
     imageUrl: "/images/iphone-12-pro-max.jpg",
     brand: "Apple",
@@ -31,6 +32,7 @@ export const products: Product[] = [
     id: 2,
     name: "Roborock Q5 Pro Robot Vacuum and Mop Combo",
     description: "Powerful robotic vacuum cleaner with DuoRoller Brush, 5500Pa suction, and LiDAR navigation.",
+    type: "Home Appliances",
     price: "$249.99",
     imageUrl: "/images/roborock-q5-pro.jpg",
     brand: "Roborock",
@@ -67,11 +69,11 @@ export const products: Product[] = [
       "Compatible with Roborock App and voice control via Alexa, Google Home, and Siri.",
     ],
   },
-
   {
     id: 3,
     name: "Amazon Fire TV Stick HD (newest model), free and live TV, Alexa Voice Remote, smart home controls, HD streaming",
     description: "Enjoy fast, affordable streaming in Full HD with Alexa Voice Remote and smart home controls.",
+    type: "Entertainment",
     price: "$39.99",
     imageUrl: "/images/fire-tv-stick-hd.jpg",
     brand: "Amazon",
@@ -104,6 +106,7 @@ export const products: Product[] = [
     id: 4,
     name: "All-new Amazon Kindle Paperwhite (16 GB) – Our fastest Kindle ever, with new 7\" glare-free display, and weeks of battery life – Black",
     description: "Enjoy a faster Kindle with a larger, glare-free display, waterproof design, and long battery life. Perfect for reading anywhere.",
+    type: "E-Readers",
     price: "$154.99",
     imageUrl: "/images/kindle-paperwhite.jpg", // Asegúrate de agregar esta imagen en tu carpeta de imágenes
     brand: "Amazon",
@@ -135,11 +138,11 @@ export const products: Product[] = [
       "User Manual"
     ]
   },
-
   {
     id: 5,
     name: "EF ECOFLOW Extra Battery for Delta Pro Ultra, Lifepo4 Battery Backup for Home Use, Emergency, Camping, RV",
     description: "Expandable Lithium-Phosphate battery with 6kW rated capacity for home use, emergencies, camping, and RV. Up to 3500 cycles for long-term use.",
+    type: "Energy Storage",
     price: "$3,799.00",
     imageUrl: "/images/eco-flow-battery.jpg", // Asegúrate de agregar esta imagen en tu carpeta de imágenes
     brand: "EF ECOFLOW",
@@ -173,12 +176,12 @@ export const products: Product[] = [
       "User Manual"
     ]
   },
-
   {
     id: 6,
     name: "Samsung Galaxy Tab S10 Ultra Gray 256GB - AI Tablet, 14.6\", AMOLED 2X, Anti-Reflection, 420 Nits, Vapor Chamber, S Pen Included (CAD Version & Warranty)",
     description: "14.6-inch Dynamic AMOLED 2X tablet with AI-powered features, S Pen included, and IP68 durability. Perfect for work and creativity on the go.",
     price: "$1,249.99",
+    type: "Tablets",
     imageUrl: "/images/galaxy-tab-s10-ultra.jpg",
     brand: "Samsung",
     modelName: "Galaxy Tab S10 Ultra",
