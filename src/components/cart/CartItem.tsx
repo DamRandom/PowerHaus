@@ -13,8 +13,8 @@ export function CartItem({ product, onRemove }: CartItemProps) {
         <Image
           src={product.imageUrl}
           alt={product.name}
-          width={80} // Establece el tamaño adecuado
-          height={80} // Establece el tamaño adecuado
+          width={80}
+          height={80}
           className="object-cover rounded-lg mr-4"
         />
         <div>

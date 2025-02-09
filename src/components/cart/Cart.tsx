@@ -12,7 +12,7 @@ export default function Cart({ cartItems, onRemoveFromCart }: CartProps) {
   return (
     <div className="flex-1 bg-[#DADCE1] text-[#262520] px-4 py-8">
       <div className="container mx-auto max-w-6xl">
-        {/* Sección de productos y resumen */}
+        {/* Products and summary section */}
         <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
           <h2 className="text-3xl font-bold text-center mb-6">Your Cart</h2>
           {cartItems.length === 0 ? (
@@ -32,7 +32,7 @@ export default function Cart({ cartItems, onRemoveFromCart }: CartProps) {
           )}
         </div>
 
-        {/* Sección de pago y formulario */}
+        {/* Checkout and form section */}
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-center mb-6">Delivery Information</h2>
           <CartForm />
@@ -41,4 +41,3 @@ export default function Cart({ cartItems, onRemoveFromCart }: CartProps) {
     </div>
   );
 }
-
