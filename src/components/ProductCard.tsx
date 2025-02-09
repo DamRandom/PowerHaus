@@ -11,20 +11,20 @@ interface ProductCardProps {
 export default function ProductCard({ product, onAddToCart, isAdded }: ProductCardProps) {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col items-center h-full">
-      {/* Imagen del producto */}
+      {/* Product image */}
       <Link href={`/store/${product.id}`} className="w-full flex justify-center">
         <div className="relative w-40 h-56 cursor-pointer">
           <Image
             src={product.imageUrl}
             alt={product.name}
             layout="fill"
-            objectFit="contain" // Ajusta la imagen sin recortar
+            objectFit="contain"
             className="rounded-t-lg"
           />
         </div>
       </Link>
 
-      {/* Información del producto */}
+      {/* Product information */}
       <div className="p-4 flex flex-col justify-between flex-grow">
         <Link href={`/store/${product.id}`}>
           <h2 className="text-lg font-semibold cursor-pointer hover:text-[#596766] transition-colors">
@@ -34,11 +34,11 @@ export default function ProductCard({ product, onAddToCart, isAdded }: ProductCa
         <p className="text-sm text-gray-600">{product.description}</p>
         <p className="text-xl font-bold mt-2">{product.price}</p>
 
-        {/* Botón de añadir al carrito */}
+        {/* Add to cart button */}
         <button
           onClick={() => onAddToCart(product)}
           className={`mt-4 w-full py-2 rounded-lg transition-colors ${isAdded ? 'bg-[#ABC1BB] cursor-not-allowed' : 'bg-[#596766] text-white hover:bg-[#ABC1BB]'}`}
-          disabled={isAdded} // Deshabilitar el botón si el producto ya está en el carrito
+          disabled={isAdded}
         >
           {isAdded ? "Added" : "Add to Cart"}
         </button>
