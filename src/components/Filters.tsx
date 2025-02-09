@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react"; // Importamos los iconos de Lucide
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface FilterProps {
   categories: string[];
@@ -14,9 +14,8 @@ export default function Filters({ categories, onCategorySelect, onClearFilters }
 
   return (
     <div className="bg-tertiary px-6 py-4 mb-8">
-      {/* Tarjeta de Filtros */}
+      {/* Filters Card */}
       <div className="bg-white p-4 rounded-lg shadow-md mb-6">
-        {/* Filtro superior */}
         <div className="flex justify-between items-center border-b pb-2">
           <h2 className="text-lg font-medium text-gray-700">Filters</h2>
           <button
@@ -28,7 +27,7 @@ export default function Filters({ categories, onCategorySelect, onClearFilters }
         </div>
       </div>
 
-      {/* Tarjeta de Categorías */}
+      {/* Categories Card */}
       <div className="bg-white p-4 rounded-lg shadow-md">
         <button
           onClick={() => setIsCategoryOpen(!isCategoryOpen)}
@@ -45,7 +44,7 @@ export default function Filters({ categories, onCategorySelect, onClearFilters }
                   key={index}
                   onClick={() => {
                     onCategorySelect(category);
-                    setIsCategoryOpen(false); // Cerrar el dropdown después de seleccionar
+                    setIsCategoryOpen(false); // Close dropdown after selection
                   }}
                   className="cursor-pointer hover:bg-[#ABC1BB] p-2 px-4 text-gray-800"
                 >
