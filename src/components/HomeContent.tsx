@@ -4,9 +4,9 @@ export default function HomeContent() {
   return (
     <section className="flex-1 flex items-center justify-center px-4 py-6 bg-[#DADCE1] text-[#262520] mt-8">
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Columna izquierda */}
+        {/* Left column */}
         <div className="flex flex-col gap-4 w-full">
-          {/* Quiénes somos */}
+          {/* Who We Are */}
           <div className="p-4">
             <h2 className="text-2xl font-semibold mb-2">Who We Are</h2>
             <p className="text-base leading-relaxed text-justify mb-3">
@@ -17,7 +17,7 @@ export default function HomeContent() {
             </p>
           </div>
 
-          {/* Qué ofrecemos */}
+          {/* What We Offer */}
           <div className="p-4">
             <h2 className="text-2xl font-semibold mb-2">What We Offer</h2>
             <p className="text-base leading-relaxed text-justify mb-3">
@@ -26,7 +26,7 @@ export default function HomeContent() {
             <p className="text-base leading-relaxed text-justify mb-3">
               Innovation, quality, and durability define everything we offer.
             </p>
-            {/* Botón a la tienda */}
+            {/* Button to store */}
             <Link href="/store">
               <div className="inline-block mt-2 px-6 py-2 bg-[#596766] text-white rounded-lg text-center hover:bg-[#ABC1BB]">
                 Visit Our Store
@@ -35,7 +35,7 @@ export default function HomeContent() {
           </div>
         </div>
 
-        {/* Columna derecha */}
+        {/* Right column */}
         <div className="p-4 flex items-center">
           <div>
             <h2 className="text-2xl font-semibold mb-2">Meet Our Team</h2>
@@ -50,7 +50,7 @@ export default function HomeContent() {
               problems, and enhance your home experience. PowerHaus is not just about products; it’s about creating a seamless,
               hassle-free lifestyle through reliable technology.
             </p>
-            {/* Botón a conocer al equipo */}
+            {/* Button to meet the team */}
             <Link href="#team">
               <div className="inline-block mt-2 px-6 py-2 bg-[#596766] text-white rounded-lg text-center hover:bg-[#ABC1BB]">
                 Meet Our Team
