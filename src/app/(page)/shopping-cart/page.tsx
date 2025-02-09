@@ -7,7 +7,7 @@ import { Product } from "@/types/Product";
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
-  // Cargar productos del carrito desde localStorage al montar el componente
+  // Load cart items from localStorage when the component mounts
   useEffect(() => {
     const savedCartItems = localStorage.getItem("cartItems");
     if (savedCartItems) {
@@ -15,20 +15,20 @@ export default function CartPage() {
     }
   }, []);
 
-  // Guardar productos en el carrito en localStorage cada vez que cambie el carrito
+  // Save cart items to localStorage whenever the cart changes
   useEffect(() => {
     if (cartItems.length > 0) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
     } else {
-      localStorage.removeItem("cartItems"); // Si el carrito está vacío, eliminarlo de localStorage
+      localStorage.removeItem("cartItems"); // Remove from localStorage if the cart is empty
     }
   }, [cartItems]);
 
-  // Eliminar un artículo del carrito
+  // Remove an item from the cart
   const handleRemoveFromCart = (id: number) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Actualiza localStorage después de modificar el carrito
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart)); // Update localStorage after modifying the cart
   };
 
   return (
