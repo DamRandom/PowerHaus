@@ -108,7 +108,7 @@ export const products: Product[] = [
     description: "Enjoy a faster Kindle with a larger, glare-free display, waterproof design, and long battery life. Perfect for reading anywhere.",
     type: "E-Readers",
     price: "$154.99",
-    imageUrl: "/images/kindle-paperwhite.jpg", // Asegúrate de agregar esta imagen en tu carpeta de imágenes
+    imageUrl: "/images/kindle-paperwhite.jpg", 
     brand: "Amazon",
     modelName: "Kindle Paperwhite",
     rating: 4.4,
@@ -144,7 +144,7 @@ export const products: Product[] = [
     description: "Expandable Lithium-Phosphate battery with 6kW rated capacity for home use, emergencies, camping, and RV. Up to 3500 cycles for long-term use.",
     type: "Energy Storage",
     price: "$3,799.00",
-    imageUrl: "/images/eco-flow-battery.jpg", // Asegúrate de agregar esta imagen en tu carpeta de imágenes
+    imageUrl: "/images/eco-flow-battery.jpg", 
     brand: "EF ECOFLOW",
     modelName: "Delta Pro Ultra Extra Battery",
     rating: 4.2,
@@ -206,7 +206,7 @@ export const products: Product[] = [
     screenSize: "14.6 Inches",
     displayResolution: "3840x2160",
     durability: "IP68 (Water and Dust Resistant)",
-    weight: "N/A", // Si no está disponible, lo puedes dejar en N/A
+    weight: "N/A", 
     includedComponents: [
       "Samsung Galaxy Tab S10 Ultra",
       "S Pen",
@@ -215,7 +215,4 @@ export const products: Product[] = [
       "User Manual"
     ]
   }
-
-
-
 ]

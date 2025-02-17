@@ -9,10 +9,14 @@ import Link from "next/link";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Product } from "@/types/Product";
 import Filters from "@/components/Filters"; // Importing the Filters component
+import SearchBar from "@/components/SearchBar"; // Importing the SearchBar component
 
 export default function StorePage() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchFilter, setSearchFilter] = useState("name");
+  const [searchPrice, setSearchPrice] = useState("");
   const [isAtFooter, setIsAtFooter] = useState(false);
 
   // Load cart items from localStorage when the component mounts
@@ -45,11 +49,34 @@ export default function StorePage() {
 
   const handleClearFilters = () => {
     setSelectedCategory(null);
+    setSearchQuery("");
+    setSearchPrice("");
   };
 
-  const filteredProducts = selectedCategory
-    ? products.filter((product) => product.type === selectedCategory)
-    : products;
+  const handleSearch = (query: string, filter: string, priceRange: string) => {
+    setSearchQuery(query);
+    setSearchFilter(filter);
+    setSearchPrice(priceRange);
+  };
+
+  const filteredProducts = products.filter((product) => {
+    let matchesCategory = selectedCategory ? product.type === selectedCategory : true;
+    let matchesSearch = searchQuery
+      ? searchFilter === "name"
+        ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        : product.type.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+    let matchesPrice =
+      searchPrice === "low"
+        ? product.price <= 50
+        : searchPrice === "medium"
+        ? product.price > 50 && product.price <= 200
+        : searchPrice === "high"
+        ? product.price > 200
+        : true;
+
+    return matchesCategory && matchesSearch && matchesPrice;
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,8 +96,8 @@ export default function StorePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 bg-[#DADCE1] text-[#262520] p-8 pt-24"> {/* Added pt-24 for top padding */}
-        <div className="container mx-auto flex gap-8">
+      <main className="flex-1 bg-[#DADCE1] text-[#262520] p-8 pt-24">
+        <div className="container mx-auto flex flex-col md:flex-row gap-8">
           {/* Filters on the left */}
           <div className="w-full md:w-1/4">
             <Filters
@@ -80,17 +107,22 @@ export default function StorePage() {
             />
           </div>
 
-          {/* Products on the right */}
-          <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-                isAdded={cartItems.some(item => item.id === product.id)} // Check if the product is already in the cart
-              />
-            ))}
+          {/* SearchBar on the right */}
+          <div className="w-full md:w-3/4">
+            <SearchBar onSearch={handleSearch} />
           </div>
+        </div>
+
+        {/* Products grid below */}
+        <div className="container mx-auto mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onAddToCart={handleAddToCart}
+              isAdded={cartItems.some(item => item.id === product.id)}
+            />
+          ))}
         </div>
       </main>
 
