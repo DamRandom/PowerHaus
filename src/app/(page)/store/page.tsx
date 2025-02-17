@@ -8,8 +8,8 @@ import { products } from "@/data/Products";
 import Link from "next/link";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Product } from "@/types/Product";
-import Filters from "@/components/Filters"; // Importing the Filters component
-import SearchBar from "@/components/SearchBar"; // Importing the SearchBar component
+import Filters from "@/components/Filters";
+import SearchBar from "@/components/SearchBar"; 
 
 export default function StorePage() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -60,20 +60,20 @@ export default function StorePage() {
   };
 
   const filteredProducts = products.filter((product) => {
-    let matchesCategory = selectedCategory ? product.type === selectedCategory : true;
-    let matchesSearch = searchQuery
+    const matchesCategory = selectedCategory ? product.type === selectedCategory : true;
+    const matchesSearch = searchQuery
       ? searchFilter === "name"
         ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
-        : product.type.toLowerCase().includes(searchQuery.toLowerCase())
+        : product.type?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false
       : true;
-    let matchesPrice =
+      const matchesPrice =
       searchPrice === "low"
-        ? product.price <= 50
+        ? Number(product.price) <= 50
         : searchPrice === "medium"
-        ? product.price > 50 && product.price <= 200
+        ? Number(product.price) > 50 && Number(product.price) <= 200
         : searchPrice === "high"
-        ? product.price > 200
-        : true;
+        ? Number(product.price) > 200
+        : true;    
 
     return matchesCategory && matchesSearch && matchesPrice;
   });
