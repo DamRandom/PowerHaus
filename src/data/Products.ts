@@ -3,6 +3,7 @@ import { Product } from "@/types/Product";
 export const products: Product[] = [
   {
     id: 1,
+    category: "Smartphones",
     name: "Apple iPhone 12 Pro Max, 128GB, Graphite - Unlocked (Renewed)",
     description: "Fully unlocked, renewed iPhone 12 Pro Max with 128GB storage.",
     type: "Smartphone",
@@ -30,6 +31,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
+    category: "Home Appliances",
     name: "Roborock Q5 Pro Robot Vacuum and Mop Combo",
     description: "Powerful robotic vacuum cleaner with DuoRoller Brush, 5500Pa suction, and LiDAR navigation.",
     type: "Home Appliances",
@@ -71,6 +73,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
+    category: "Entertainment",
     name: "Amazon Fire TV Stick HD (newest model), free and live TV, Alexa Voice Remote, smart home controls, HD streaming",
     description: "Enjoy fast, affordable streaming in Full HD with Alexa Voice Remote and smart home controls.",
     type: "Entertainment",
@@ -104,6 +107,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
+    category: "E-Readers",
     name: "All-new Amazon Kindle Paperwhite (16 GB) – Our fastest Kindle ever, with new 7\" glare-free display, and weeks of battery life – Black",
     description: "Enjoy a faster Kindle with a larger, glare-free display, waterproof design, and long battery life. Perfect for reading anywhere.",
     type: "E-Readers",
@@ -140,6 +144,7 @@ export const products: Product[] = [
   },
   {
     id: 5,
+    category: "Energy Storage",
     name: "EF ECOFLOW Extra Battery for Delta Pro Ultra, Lifepo4 Battery Backup for Home Use, Emergency, Camping, RV",
     description: "Expandable Lithium-Phosphate battery with 6kW rated capacity for home use, emergencies, camping, and RV. Up to 3500 cycles for long-term use.",
     type: "Energy Storage",
@@ -178,6 +183,7 @@ export const products: Product[] = [
   },
   {
     id: 6,
+    category: "Tablets",
     name: "Samsung Galaxy Tab S10 Ultra Gray 256GB - AI Tablet, 14.6\", AMOLED 2X, Anti-Reflection, 420 Nits, Vapor Chamber, S Pen Included (CAD Version & Warranty)",
     description: "14.6-inch Dynamic AMOLED 2X tablet with AI-powered features, S Pen included, and IP68 durability. Perfect for work and creativity on the go.",
     price: "$1,249.99",

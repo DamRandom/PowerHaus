@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { products } from "@/data/Products";
 
 interface FilterProps {
   categories: string[];
@@ -9,8 +10,12 @@ interface FilterProps {
   onClearFilters: () => void;
 }
 
-export default function Filters({ categories, onCategorySelect, onClearFilters }: FilterProps) {
+export default function Filters({ onCategorySelect, onClearFilters }: Omit<FilterProps, 'categories'>) {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+
+  const categories = Array.from(
+    new Set(products.map((product) => product.category).filter((cat): cat is string => !!cat))
+  );
 
   return (
     <div className="bg-tertiary px-6 pb-4 mb-8">
@@ -44,7 +49,7 @@ export default function Filters({ categories, onCategorySelect, onClearFilters }
                   key={index}
                   onClick={() => {
                     onCategorySelect(category);
-                    setIsCategoryOpen(false); // Close dropdown after selection
+                    setIsCategoryOpen(false);
                   }}
                   className="cursor-pointer hover:bg-[#ABC1BB] p-2 px-4 text-gray-800"
                 >
