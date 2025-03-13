@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../context/CartContext"; 
 
 const Navbar: React.FC = () => {
   const [location, setLocation] = useState<string>("Detecting...");
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -42,15 +43,24 @@ const Navbar: React.FC = () => {
 
       {/* Ubicación centrada */}
       <div className="absolute left-1/2 transform -translate-x-1/2 text-center">
-        <p className="text-sm text-gray-400">Location</p>
+        <p className="text-sm text-gray-400">Your Location</p>
         <p className="text-lg font-semibold">{location}</p>
       </div>
 
       {/* Carrito */}
       <div className="flex-1 flex justify-end relative">
-        <FaShoppingCart className="text-2xl cursor-pointer hover:text-orange-500 transition" />
+        {/* Usamos el icono de carrito personalizado */}
+        <Link href="/cart">
+          <Image
+            src="/icons/shopping-cart.png"
+            alt="Shopping Cart"
+            width={44}
+            height={24}
+            className="cursor-pointer hover:text-orange-500 transition"
+          />
+        </Link>
         <span className="absolute top-0 right-0 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-          3
+          {cartCount > 0 ? cartCount : 0} {/* Muestra 0 si el carrito está vacío */}
         </span>
       </div>
     </nav>
