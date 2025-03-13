@@ -1,0 +1,198 @@
+{
+    "Groceries": {
+      "Fruits": [
+        {
+          "id": 1,
+          "name": "Apple",
+          "category": "Groceries",
+          "subCategory": "Fruits",
+          "price": "$1.99",
+          "image": "/products/apple.jpg",
+          "description": "Fresh red apples, handpicked for quality.",
+          "weight": "0.5 kg",
+          "organic": true
+        },
+        {
+          "id": 2,
+          "name": "Banana",
+          "category": "Groceries",
+          "subCategory": "Fruits",
+          "price": "$0.99",
+          "image": "/products/banana.jpg",
+          "description": "Sweet bananas rich in potassium.",
+          "weight": "0.4 kg",
+          "organic": false
+        }
+      ],
+      "Vegetables": [
+        {
+          "id": 3,
+          "name": "Carrot",
+          "category": "Groceries",
+          "subCategory": "Vegetables",
+          "price": "$2.49",
+          "image": "/products/carrot.jpg",
+          "description": "Fresh carrots, perfect for salads and soups.",
+          "weight": "0.3 kg",
+          "organic": true
+        },
+        {
+          "id": 4,
+          "name": "Broccoli",
+          "category": "Groceries",
+          "subCategory": "Vegetables",
+          "price": "$3.49",
+          "image": "/products/broccoli.jpg",
+          "description": "Fresh broccoli, high in vitamins.",
+          "weight": "0.6 kg",
+          "organic": false
+        }
+      ]
+    },
+    "Electronics": {
+      "Mobile Phones": [
+        {
+          "id": 5,
+          "name": "Smartphone Pro",
+          "category": "Electronics",
+          "subCategory": "Mobile Phones",
+          "price": "$799",
+          "image": "/products/smartphone.jpg",
+          "description": "High-performance smartphone with a stunning display.",
+          "storage": "128 GB",
+          "battery": "4000 mAh",
+          "brand": "TechBrand"
+        }
+      ],
+      "Refrigerators": [
+        {
+          "id": 6,
+          "name": "FridgeMaster 3000",
+          "category": "Electronics",
+          "subCategory": "Refrigerators",
+          "price": "$1299",
+          "image": "/products/fridge.jpg",
+          "description": "Energy-efficient refrigerator with a large capacity.",
+          "capacity": "500 L",
+          "energyRating": "A+",
+          "brand": "HomeTech"
+        }
+      ]
+    },
+    "Home & Kitchen": {
+      "Cookware": [
+        {
+          "id": 7,
+          "name": "Non-stick Pan",
+          "category": "Home & Kitchen",
+          "subCategory": "Cookware",
+          "price": "$29.99",
+          "image": "/products/pan.jpg",
+          "description": "Durable non-stick frying pan, perfect for everyday cooking.",
+          "material": "Aluminum",
+          "diameter": "28 cm",
+          "brand": "CookMate"
+        }
+      ],
+      "Furniture": [
+        {
+          "id": 8,
+          "name": "Wooden Coffee Table",
+          "category": "Home & Kitchen",
+          "subCategory": "Furniture",
+          "price": "$199",
+          "image": "/products/coffeetable.jpg",
+          "description": "Stylish wooden coffee table with a modern design.",
+          "material": "Wood",
+          "dimensions": "120 x 60 x 45 cm",
+          "brand": "FurniTech"
+        }
+      ]
+    },
+    "Health & Beauty": {
+      "Skin Care": [
+        {
+          "id": 9,
+          "name": "Moisturizing Cream",
+          "category": "Health & Beauty",
+          "subCategory": "Skin Care",
+          "price": "$24.99",
+          "image": "/products/cream.jpg",
+          "description": "Hydrating cream with natural ingredients to nourish the skin.",
+          "ingredients": "Aloe Vera, Vitamin E",
+          "brand": "BeautyGlow"
+        }
+      ],
+      "Hair Care": [
+        {
+          "id": 10,
+          "name": "Shampoo for Dry Hair",
+          "category": "Health & Beauty",
+          "subCategory": "Hair Care",
+          "price": "$14.99",
+          "image": "/products/shampoo.jpg",
+          "description": "Shampoo formulated for dry and damaged hair.",
+          "volume": "300 ml",
+          "brand": "HairLuxe"
+        }
+      ]
+    },
+    "Gardening": {
+      "Plants": [
+        {
+          "id": 11,
+          "name": "Succulent Plant",
+          "category": "Gardening",
+          "subCategory": "Plants",
+          "price": "$12.99",
+          "image": "/products/succulent.jpg",
+          "description": "Low-maintenance succulent plant, perfect for home decor.",
+          "potSize": "15 cm",
+          "brand": "GreenLeaf"
+        }
+      ],
+      "Tools": [
+        {
+          "id": 12,
+          "name": "Garden Trowel",
+          "category": "Gardening",
+          "subCategory": "Tools",
+          "price": "$8.99",
+          "image": "/products/trowel.jpg",
+          "description": "Sturdy trowel for easy digging and planting.",
+          "material": "Stainless Steel",
+          "length": "30 cm",
+          "brand": "GardenPro"
+        }
+      ]
+    },
+    "Cleaning Supplies": {
+      "Household Cleaners": [
+        {
+          "id": 13,
+          "name": "Multi-surface Cleaner",
+          "category": "Cleaning Supplies",
+          "subCategory": "Household Cleaners",
+          "price": "$5.99",
+          "image": "/products/cleaner.jpg",
+          "description": "Effective cleaner for all surfaces, removes stains and dirt.",
+          "volume": "500 ml",
+          "brand": "CleanMaster"
+        }
+      ],
+      "Laundry": [
+        {
+          "id": 14,
+          "name": "Laundry Detergent",
+          "category": "Cleaning Supplies",
+          "subCategory": "Laundry",
+          "price": "$8.99",
+          "image": "/products/detergent.jpg",
+          "description": "Powerful laundry detergent for fresh and clean clothes.",
+          "volume": "1 L",
+          "brand": "FreshClean"
+        }
+      ]
+    }
+  }
+  
