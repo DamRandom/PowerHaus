@@ -19,6 +19,7 @@ const Navbar: React.FC = () => {
         const data = await res.json();
         if (data.region && data.postal) {
           setLocation({ region: data.region, postal: data.postal });
+          setPostalCode(data.postal);
         } else {
           setLocation(null);
         }
@@ -30,8 +31,9 @@ const Navbar: React.FC = () => {
     fetchLocation();
   }, []);
 
-  const handleLocationUpdate = () => {
-    setLocation({ region: location?.region || "Unknown", postal: postalCode });
+  const handleLocationUpdate = (newPostal: string) => {
+    setPostalCode(newPostal);
+    setLocation({ region: location?.region || "Unknown", postal: newPostal });
     setIsModalOpen(false);
   };
 
@@ -52,8 +54,7 @@ const Navbar: React.FC = () => {
       <div className="absolute left-1/2 transform -translate-x-1/2 flex items-start">
         <div className="flex flex-col items-start">
           <p className="text-xs font-medium">
-            Delivering to{" "}
-            {location ? `${location.region}, ${location.postal}` : "Location unavailable"}
+            Delivering to {location ? `${location.region}, ${location.postal}` : "Location unavailable"}
           </p>
           <div
             className="flex items-center text-sm font-bold text-white cursor-pointer hover:text-orange-400 transition mt-1"
