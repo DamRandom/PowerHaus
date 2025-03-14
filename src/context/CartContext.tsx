@@ -3,12 +3,11 @@
 
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
-// Definir el tipo de un producto en el carrito
 export type ProductInCart = {
   id: number;
   name: string;
   quantity: number;
-  price: number; // Agregar otros campos que necesites
+  price: number; 
 };
 
 type CartContextType = {
