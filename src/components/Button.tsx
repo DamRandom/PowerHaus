@@ -4,7 +4,7 @@ import Link from 'next/link';
 interface ButtonProps {
   label: string;
   link: string;
-  added: boolean; // Añadido para controlar el estado de "Añadido"
+  added: boolean; 
 }
 
 const Button: React.FC<ButtonProps> = ({ label, link, added }) => {

@@ -126,15 +126,15 @@
       "Hair Care": [
         {
           "id": 10,
-          "name": "Shampoo for Dry Hair",
+          "name": "L'Oreal Elvive Total Repair 5 Set",
           "category": "Health & Beauty",
           "subCategory": "Hair Care",
-          "price": "$14.99",
+          "price": "$16.99",
           "image": "/products/shampoo.jpg",
-          "description": "Shampoo formulated for dry and damaged hair.",
-          "volume": "300 ml",
-          "brand": "HairLuxe"
-        }
+          "description": "Shampoo & conditioner for damaged hair, with Repair Concentrate and Protein.",
+          "volume": "828 ml (Pack of 2)",
+          "brand": "L'Oreal Paris"
+        }        
       ]
     },
     "Gardening": {
