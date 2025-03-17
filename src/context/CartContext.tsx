@@ -1,4 +1,3 @@
-// context/CartContext.tsx
 'use client';
 
 import React, { createContext, useState, useContext, ReactNode } from "react";
@@ -7,7 +6,7 @@ export type ProductInCart = {
   id: number;
   name: string;
   quantity: number;
-  price: number; 
+  price: number;
 };
 
 type CartContextType = {
@@ -17,6 +16,7 @@ type CartContextType = {
   removeFromCart: (productId: number) => void;
   updateQuantity: (productId: number, quantity: number) => void;
   clearCart: () => void;
+  getTotalPrice: () => number; // <-- Agregado aquí
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -32,12 +32,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setCartItems((prevItems) => {
       const existingProductIndex = prevItems.findIndex((item) => item.id === product.id);
       if (existingProductIndex >= 0) {
-        // Si el producto ya está en el carrito, actualizamos la cantidad
         const updatedItems = [...prevItems];
         updatedItems[existingProductIndex].quantity += product.quantity;
         return updatedItems;
       } else {
-        // Si el producto no está en el carrito, lo agregamos
         return [...prevItems, product];
       }
     });
@@ -62,17 +60,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setCartItems([]);
   };
 
-  // Contador de productos en el carrito
+  const getTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, cartCount, addToCart, removeFromCart, updateQuantity, clearCart }}>
+    <CartContext.Provider
+      value={{ cartItems, cartCount, addToCart, removeFromCart, updateQuantity, clearCart, getTotalPrice }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
 
-// Custom hook para usar el carrito
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
   if (!context) {
