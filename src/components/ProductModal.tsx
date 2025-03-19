@@ -39,7 +39,12 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
       id: product.id,
       name: product.name,
       quantity,
-      price: parseFloat(product.price.replace("$", "").trim()),
+      price: product.price,
+      image: product.image,
+      category: product.category || '',
+      subCategory: product.subCategory || '',
+      description: product.description || '',
+      brand: product.brand || '',
     });
     onClose();
   };
@@ -71,7 +76,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
             className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative"
             onClick={(e) => e.stopPropagation()}
           >
-
             {/* Product image */}
             <div className="relative w-full h-64 mb-4">
               <Image src={product.image} alt={product.name} layout="fill" objectFit="cover" className="rounded-md" />

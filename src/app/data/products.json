@@ -30,7 +30,7 @@
           "name": "Carrot",
           "category": "Groceries",
           "subCategory": "Vegetables",
-          "price": "$2.49",
+          "price": 2.49,
           "image": "/products/carrot.jpg",
           "description": "Fresh carrots, perfect for salads and soups.",
           "weight": "0.3 kg",

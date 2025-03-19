@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Product } from "../types/products";
 import { motion } from "framer-motion";
 import { useCart } from "../context/CartContext";
-import ProductModal from "./ProductModal"; // Importamos el modal
+import ProductModal from "./ProductModal";
 import "../styles/productCard.css";
 
 interface ProductCardProps {
@@ -11,9 +11,9 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, cartItems } = useCart();
+  const { cartItems, addToCart } = useCart();
   const [added, setAdded] = useState<boolean>(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para el modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const productInCart = cartItems.find(item => item.id === product.id);
@@ -21,13 +21,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   }, [cartItems, product.id]);
 
   const handleAddToCart = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Evita que se abra el modal al hacer clic en el botón
-    addToCart({
-      id: product.id,
-      name: product.name,
-      quantity: 1,
-      price: product.price,
-    });
+    e.stopPropagation();
+    addToCart({ ...product, quantity: 1 }); 
     setAdded(true);
   };
 
@@ -39,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        onClick={() => setIsModalOpen(true)} // Abre el modal al hacer clic en la tarjeta
+        onClick={() => setIsModalOpen(true)}
       >
         <div className="image-container">
           <Image
@@ -71,7 +66,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </motion.div>
 
-      {/* Modal del producto */}
       <ProductModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} product={product} />
     </>
   );
