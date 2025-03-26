@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Input from "../components/Input"; // Asegúrate de que la ruta sea correcta
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -17,12 +16,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
   });
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -58,66 +52,69 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit}>
               <div className="flex space-x-4 mb-4">
                 <div className="w-full">
-                  <Input
+                  <label className="block text-gray-800">First Name</label>
+                  <input
                     id="firstName"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    label="First Name"
                     required
+                    className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                   />
                 </div>
                 <div className="w-full">
-                  <Input
+                  <label className="block text-gray-800">Last Name</label>
+                  <input
                     id="lastName"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    label="Last Name"
                     required
+                    className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                   />
                 </div>
               </div>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-4">How can we contact you?</h3>
               <div className="mb-4">
-                <Input
+                <label className="block text-gray-800">Address</label>
+                <input
                   id="address"
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
-                  label="Address"
                   required
+                  className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
               <div className="mb-4">
-                <Input
+                <label className="block text-gray-800">Phone Number</label>
+                <input
                   id="phoneNumber"
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  label="Phone Number"
                   required
                   type="tel"
+                  className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
 
               <div className="mt-6 flex space-x-6">
-  <button
-    type="button"
-    className="w-full bg-gray-300 text-gray-800 py-2 rounded-md hover:bg-gray-400 transition"
-    onClick={onClose}
-  >
-    Cancel
-  </button>
-  <button
-    type="submit"
-    className="w-full bg-gray-900 text-white py-2 rounded-md hover:bg-gray-800 transition"
-  >
-    Submit
-  </button>
-</div>
-
+                <button
+                  type="button"
+                  className="w-full bg-gray-300 text-gray-800 py-2 rounded-md hover:bg-gray-400 transition"
+                  onClick={onClose}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="w-full bg-gray-900 text-white py-2 rounded-md hover:bg-gray-800 transition"
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </motion.div>
         </div>
