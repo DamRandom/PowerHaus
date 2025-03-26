@@ -1,17 +1,28 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { FiPlus, FiMinus, FiTrash } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import Image from "next/image";
+import CheckoutModal from "../../components/CheckoutModal"; // Asegúrate de que la ruta sea correcta
 
 const promoImage = "/images/sales.jpg";
 
 const CartPage: React.FC = () => {
   const { cartItems, updateQuantity, removeFromCart, getTotalPrice } = useCart();
   const totalPrice = useMemo(() => getTotalPrice().toFixed(2), [getTotalPrice]);
+  
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar la apertura del modal
+
+  const handleProceedToCheckout = () => {
+    setIsModalOpen(true); // Abre el modal
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Cierra el modal
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-white/90 via-white/70 to-gray-200">
@@ -74,7 +85,10 @@ const CartPage: React.FC = () => {
                 <p className="text-lg font-semibold text-gray-900">Total:</p>
                 <p className="text-2xl font-semibold text-orange-600">${totalPrice}</p>
               </div>
-              <button className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 transition">
+              <button
+                onClick={handleProceedToCheckout} // Abre el modal al hacer clic
+                className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 transition"
+              >
                 Proceed to Checkout
               </button>
             </div>
@@ -103,6 +117,9 @@ const CartPage: React.FC = () => {
         </div>
       </main>
       <Footer />
+
+      {/* Checkout Modal */}
+      <CheckoutModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 };
