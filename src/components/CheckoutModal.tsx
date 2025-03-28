@@ -1,7 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ConfirmationModal from "./ConfirmationModal"; // Importa el modal de confirmación
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import validationSchema from "../validations/validationSchema";
+import ConfirmationModal from "./ConfirmationModal"; 
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -9,13 +12,6 @@ interface CheckoutModalProps {
 }
 
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    phoneNumber: "",
-  });
-
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   useEffect(() => {
@@ -25,18 +21,21 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, isConfirmOpen]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = () => {
     setIsConfirmOpen(true);
   };
 
   const confirmOrder = () => {
-    console.log("Order Confirmed:", formData);
+    console.log("Order Confirmed:", getValues());
     setIsConfirmOpen(false);
     onClose();
   };
@@ -58,29 +57,23 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
               onClick={(e) => e.stopPropagation()}
             >
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">How can we address you?</h2>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex space-x-4 mb-4">
                   <div className="w-full">
                     <label className="block text-gray-800">First Name</label>
                     <input
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      required
+                      {...register("firstName")}
                       className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                     />
+                    {errors.firstName && <p className="text-red-500">{errors.firstName.message}</p>}
                   </div>
                   <div className="w-full">
                     <label className="block text-gray-800">Last Name</label>
                     <input
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      required
+                      {...register("lastName")}
                       className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                     />
+                    {errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
                   </div>
                 </div>
 
@@ -88,25 +81,19 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
                 <div className="mb-4">
                   <label className="block text-gray-800">Address</label>
                   <input
-                    id="address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
+                    {...register("address")}
                     className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                   />
+                  {errors.address && <p className="text-red-500">{errors.address.message}</p>}
                 </div>
                 <div className="mb-4">
                   <label className="block text-gray-800">Phone Number</label>
                   <input
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    required
+                    {...register("phoneNumber")}
                     type="tel"
                     className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
                   />
+                  {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
                 </div>
 
                 <div className="mt-6 flex space-x-6">
