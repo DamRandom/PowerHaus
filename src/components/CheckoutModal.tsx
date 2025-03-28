@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import validationSchema from "../validations/validationSchema";
-import ConfirmationModal from "./ConfirmationModal"; 
+import { motion, AnimatePresence } from "framer-motion";
+import ConfirmationModal from "./ConfirmationModal";
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -12,6 +12,14 @@ interface CheckoutModalProps {
 }
 
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   useEffect(() => {
@@ -21,21 +29,20 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, isConfirmOpen]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    getValues,
-  } = useForm({
-    resolver: yupResolver(validationSchema),
-  });
+  interface FormData {
+    firstName: string;
+    lastName: string;
+    address: string;
+    phoneNumber: string;
+  }
 
-  const onSubmit = () => {
+  const onSubmit = (data: FormData) => {
+    console.log("Validated Data:", data);
     setIsConfirmOpen(true);
   };
 
   const confirmOrder = () => {
-    console.log("Order Confirmed:", getValues());
+    console.log("Order Confirmed");
     setIsConfirmOpen(false);
     onClose();
   };
@@ -60,40 +67,76 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex space-x-4 mb-4">
                   <div className="w-full">
-                    <label className="block text-gray-800">First Name</label>
+                    <label
+                      className={`block text-gray-800 ${
+                        errors.firstName ? "text-red-600" : ""
+                      }`}
+                    >
+                      First Name
+                    </label>
                     <input
                       {...register("firstName")}
-                      className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className={`w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 ${
+                        errors.firstName ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
+                      }`}
                     />
-                    {errors.firstName && <p className="text-red-500">{errors.firstName.message}</p>}
+                    {errors.firstName && (
+                      <span className="text-red-600 text-sm">{errors.firstName.message}</span>
+                    )}
                   </div>
                   <div className="w-full">
-                    <label className="block text-gray-800">Last Name</label>
+                    <label
+                      className={`block text-gray-800 ${
+                        errors.lastName ? "text-red-600" : ""
+                      }`}
+                    >
+                      Last Name
+                    </label>
                     <input
                       {...register("lastName")}
-                      className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className={`w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 ${
+                        errors.lastName ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
+                      }`}
                     />
-                    {errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
+                    {errors.lastName && (
+                      <span className="text-red-600 text-sm">{errors.lastName.message}</span>
+                    )}
                   </div>
                 </div>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">How can we contact you?</h3>
                 <div className="mb-4">
-                  <label className="block text-gray-800">Address</label>
+                  <label
+                    className={`block text-gray-800 ${errors.address ? "text-red-600" : ""}`}
+                  >
+                    Address
+                  </label>
                   <input
                     {...register("address")}
-                    className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className={`w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 ${
+                      errors.address ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
+                    }`}
                   />
-                  {errors.address && <p className="text-red-500">{errors.address.message}</p>}
+                  {errors.address && (
+                    <span className="text-red-600 text-sm">{errors.address.message}</span>
+                  )}
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-800">Phone Number</label>
+                  <label
+                    className={`block text-gray-800 ${errors.phoneNumber ? "text-red-600" : ""}`}
+                  >
+                    Phone Number
+                  </label>
                   <input
                     {...register("phoneNumber")}
                     type="tel"
-                    className="w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className={`w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 ${
+                      errors.phoneNumber ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
+                    }`}
                   />
-                  {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
+                  {errors.phoneNumber && (
+                    <span className="text-red-600 text-sm">{errors.phoneNumber.message}</span>
+                  )}
                 </div>
 
                 <div className="mt-6 flex space-x-6">
@@ -117,7 +160,6 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
         )}
       </AnimatePresence>
 
-      {/* Confirmation Modal */}
       <ConfirmationModal
         isOpen={isConfirmOpen}
         onClose={() => setIsConfirmOpen(false)}
