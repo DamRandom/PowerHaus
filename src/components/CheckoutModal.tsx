@@ -6,6 +6,7 @@ import validationSchema from "../validations/validationSchema";
 import { motion, AnimatePresence } from "framer-motion";
 import ConfirmationModal from "./ConfirmationModal";
 import EmailVerificationModal from "./EmailVerificationModal";
+import { resetForm } from "../utils/formUtils";
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -35,6 +36,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
       }, 1000);
     });
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm(setValue, setIsEmailVerified, setUserEmail);
+    }
+  }, [isOpen, setValue, setIsEmailVerified, setUserEmail]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen || isConfirmOpen || isVerificationOpen ? "hidden" : "auto";
