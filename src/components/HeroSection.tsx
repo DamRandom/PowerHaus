@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Button from './Button';
 
 const HeroSection: React.FC = () => {
   return (
@@ -26,7 +25,6 @@ const HeroSection: React.FC = () => {
         <p className="text-lg sm:text-xl mb-8 leading-relaxed">
           Elevate your shopping experience with our premium selection of products. Shop now and discover the difference.
         </p>
-        <Button label="Shop Now" link="/shop" />
       </div>
     </section>
   );
