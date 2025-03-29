@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { motion } from "framer-motion";  
+import { motion } from "framer-motion";
 import productsData from "../app/data/products.json";
 
 interface SearchBarProps {
@@ -15,9 +15,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, onFilterChange }) => {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const mainCategories = Object.keys(productsData) as string[];
-  const subCategories = selectedCategory
-    ? Object.keys(productsData[selectedCategory])
-    : [];
+  const subCategories =
+    selectedCategory && selectedCategory in productsData
+      ? Object.keys(productsData[selectedCategory as keyof typeof productsData])
+      : [];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
