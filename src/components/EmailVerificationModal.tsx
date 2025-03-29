@@ -6,18 +6,19 @@ interface EmailVerificationModalProps {
   isOpen: boolean;
   onClose: () => void;
   onVerify: (code: string) => void;
+  userEmail: string;
 }
 
 const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
   isOpen,
   onClose,
   onVerify,
+  userEmail,
 }) => {
   const [verificationCode, setVerificationCode] = useState("");
   const [countdown, setCountdown] = useState(60);
   const [isResendDisabled, setIsResendDisabled] = useState(true);
 
-  // Countdown logic for resend button
   useEffect(() => {
     if (countdown > 0) {
       const timer = setInterval(() => {
@@ -29,18 +30,39 @@ const EmailVerificationModal: React.FC<EmailVerificationModalProps> = ({
     }
   }, [countdown]);
 
+  const sendVerificationCode = async () => {
+    try {
+      const response = await fetch('/api/sendVerificationCode', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: userEmail }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Verification code sent:', data.message);
+      } else {
+        console.log('Error:', data.error);
+      }
+    } catch (error) {
+      console.error('Error sending verification code:', error);
+    }
+  };
+
   const handleVerify = () => {
     if (verificationCode) {
-      onVerify(verificationCode); // Pass the code to parent
-      onClose(); // Close the modal
+      onVerify(verificationCode);
+      onClose();
     }
   };
 
   const handleResendCode = () => {
-    setCountdown(60); // Reset countdown
-    setIsResendDisabled(true); // Disable resend button again
-    // Add logic here to resend the verification code to the user's email
-    console.log("Verification code resent.");
+    setCountdown(60);
+    setIsResendDisabled(true);
+    sendVerificationCode();
   };
 
   return (

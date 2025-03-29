@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import validationSchema from "../validations/validationSchema";
 import { motion, AnimatePresence } from "framer-motion";
 import ConfirmationModal from "./ConfirmationModal";
-import EmailVerificationModal from "./EmailVerificationModal"; // Import the new modal component
+import EmailVerificationModal from "./EmailVerificationModal";
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -17,22 +17,23 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-  const [isEmailVerified, setIsEmailVerified] = useState(false); // State to track email verification
-  const [isVerificationOpen, setIsVerificationOpen] = useState(false); // State to track the email verification modal
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isVerificationOpen, setIsVerificationOpen] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
-  // Mock function to check if email is verified (replace with your real email verification logic)
-  const checkEmailVerification = (email: string) => {
-    // Simulating a check; here you would call your API or service to verify the email status
-    if (email === "verifiedemail@example.com") {
-      setIsEmailVerified(true);
-    } else {
-      setIsEmailVerified(false);
-    }
+  // Simulated backend email verification check
+  const checkEmailVerification = async (email: string) => {
+    return new Promise<boolean>((resolve) => {
+      setTimeout(() => {
+        resolve(email === "verifiedemail@example.com");
+      }, 1000);
+    });
   };
 
   useEffect(() => {
@@ -49,27 +50,33 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
     email: string;
   }
 
-  const onSubmit = (data: FormData) => {
-    console.log("Validated Data:", data);
-    checkEmailVerification(data.email); // Check if the email is verified
+  const onSubmit = async (data: FormData) => {
+    setUserEmail(data.email);
 
     if (isEmailVerified) {
-      setIsConfirmOpen(true); // If email is verified, open confirmation modal
+      setIsConfirmOpen(true);
+      return;
+    }
+
+    const verified = await checkEmailVerification(data.email);
+
+    if (verified) {
+      setIsEmailVerified(true);
+      setIsConfirmOpen(true);
     } else {
-      setIsVerificationOpen(true); // If email is not verified, open email verification modal
+      setIsVerificationOpen(true);
     }
   };
 
   const confirmOrder = () => {
-    console.log("Order Confirmed");
     setIsConfirmOpen(false);
     onClose();
   };
 
   const handleEmailVerified = () => {
-    setIsEmailVerified(true); // Email verified, proceed with confirmation
+    setIsEmailVerified(true);
     setIsVerificationOpen(false);
-    setIsConfirmOpen(true); // Now that email is verified, show confirmation modal
+    setValue("email", userEmail);
   };
 
   return (
@@ -119,9 +126,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">How can we contact you?</h3>
                 <div className="mb-4">
-                  <label className={`block text-gray-800 ${errors.address ? "text-red-600" : ""}`}>
-                    Address
-                  </label>
+                  <label className={`block text-gray-800 ${errors.address ? "text-red-600" : ""}`}>Address</label>
                   <input
                     {...register("address")}
                     className={`w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 ${
@@ -131,9 +136,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
                   {errors.address && <span className="text-red-600 text-sm">{errors.address.message}</span>}
                 </div>
                 <div className="mb-4">
-                  <label className={`block text-gray-800 ${errors.email ? "text-red-600" : ""}`}>
-                    Email
-                  </label>
+                  <label className={`block text-gray-800 ${errors.email ? "text-red-600" : ""}`}>Email</label>
                   <input
                     {...register("email")}
                     type="email"
@@ -142,6 +145,9 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
                     }`}
                   />
                   {errors.email && <span className="text-red-600 text-sm">{errors.email.message}</span>}
+                  {isEmailVerified && (
+                    <span className="text-gray-900 text-sm ml-2">✔ Verified</span>
+                  )}
                 </div>
 
                 <div className="mt-6 flex space-x-6">
@@ -165,11 +171,14 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
         )}
       </AnimatePresence>
 
-      {/* Confirmation modal */}
       <ConfirmationModal isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)} onConfirm={confirmOrder} />
 
-      {/* Email verification modal */}
-      <EmailVerificationModal isOpen={isVerificationOpen} onClose={() => setIsVerificationOpen(false)} onVerify={handleEmailVerified} />
+      <EmailVerificationModal
+        isOpen={isVerificationOpen}
+        onClose={() => setIsVerificationOpen(false)}
+        onVerify={handleEmailVerified}
+        userEmail={userEmail}
+      />
     </>
   );
 };
