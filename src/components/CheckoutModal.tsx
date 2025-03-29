@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import validationSchema from "../validations/validationSchema";
 import { motion, AnimatePresence } from "framer-motion";
 import ConfirmationModal from "./ConfirmationModal";
+import EmailVerificationModal from "./EmailVerificationModal"; // Import the new modal component
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -21,13 +22,25 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
   });
 
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isEmailVerified, setIsEmailVerified] = useState(false); // State to track email verification
+  const [isVerificationOpen, setIsVerificationOpen] = useState(false); // State to track the email verification modal
+
+  // Mock function to check if email is verified (replace with your real email verification logic)
+  const checkEmailVerification = (email: string) => {
+    // Simulating a check; here you would call your API or service to verify the email status
+    if (email === "verifiedemail@example.com") {
+      setIsEmailVerified(true);
+    } else {
+      setIsEmailVerified(false);
+    }
+  };
 
   useEffect(() => {
-    document.body.style.overflow = isOpen || isConfirmOpen ? "hidden" : "auto";
+    document.body.style.overflow = isOpen || isConfirmOpen || isVerificationOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isOpen, isConfirmOpen]);
+  }, [isOpen, isConfirmOpen, isVerificationOpen]);
 
   interface FormData {
     firstName: string;
@@ -38,13 +51,25 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
 
   const onSubmit = (data: FormData) => {
     console.log("Validated Data:", data);
-    setIsConfirmOpen(true);
+    checkEmailVerification(data.email); // Check if the email is verified
+
+    if (isEmailVerified) {
+      setIsConfirmOpen(true); // If email is verified, open confirmation modal
+    } else {
+      setIsVerificationOpen(true); // If email is not verified, open email verification modal
+    }
   };
 
   const confirmOrder = () => {
     console.log("Order Confirmed");
     setIsConfirmOpen(false);
     onClose();
+  };
+
+  const handleEmailVerified = () => {
+    setIsEmailVerified(true); // Email verified, proceed with confirmation
+    setIsVerificationOpen(false);
+    setIsConfirmOpen(true); // Now that email is verified, show confirmation modal
   };
 
   return (
@@ -140,7 +165,11 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
         )}
       </AnimatePresence>
 
+      {/* Confirmation modal */}
       <ConfirmationModal isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)} onConfirm={confirmOrder} />
+
+      {/* Email verification modal */}
+      <EmailVerificationModal isOpen={isVerificationOpen} onClose={() => setIsVerificationOpen(false)} onVerify={handleEmailVerified} />
     </>
   );
 };
