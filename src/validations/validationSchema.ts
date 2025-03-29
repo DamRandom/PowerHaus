@@ -10,12 +10,10 @@ const validationSchema = yup.object().shape({
     .required("Last name is required")
     .matches(/^[A-Za-z]+$/, "Only letters allowed"),
   address: yup.string().required("Address is required"),
-  phoneNumber: yup
+  email: yup
     .string()
-    .required("Phone number is required")
-    .matches(/^\d+$/, "Only numbers allowed")
-    .min(8, "Phone number must be at least 8 digits")
-    .max(15, "Phone number can't be longer than 15 digits"),
+    .required("Email is required")
+    .email("Invalid email format"),
 });
 
 export default validationSchema;

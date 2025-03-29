@@ -33,7 +33,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
     firstName: string;
     lastName: string;
     address: string;
-    phoneNumber: string;
+    email: string;
   }
 
   const onSubmit = (data: FormData) => {
@@ -67,11 +67,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex space-x-4 mb-4">
                   <div className="w-full">
-                    <label
-                      className={`block text-gray-800 ${
-                        errors.firstName ? "text-red-600" : ""
-                      }`}
-                    >
+                    <label className={`block text-gray-800 ${errors.firstName ? "text-red-600" : ""}`}>
                       First Name
                     </label>
                     <input
@@ -80,16 +76,10 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
                         errors.firstName ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
                       }`}
                     />
-                    {errors.firstName && (
-                      <span className="text-red-600 text-sm">{errors.firstName.message}</span>
-                    )}
+                    {errors.firstName && <span className="text-red-600 text-sm">{errors.firstName.message}</span>}
                   </div>
                   <div className="w-full">
-                    <label
-                      className={`block text-gray-800 ${
-                        errors.lastName ? "text-red-600" : ""
-                      }`}
-                    >
+                    <label className={`block text-gray-800 ${errors.lastName ? "text-red-600" : ""}`}>
                       Last Name
                     </label>
                     <input
@@ -98,17 +88,13 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
                         errors.lastName ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
                       }`}
                     />
-                    {errors.lastName && (
-                      <span className="text-red-600 text-sm">{errors.lastName.message}</span>
-                    )}
+                    {errors.lastName && <span className="text-red-600 text-sm">{errors.lastName.message}</span>}
                   </div>
                 </div>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">How can we contact you?</h3>
                 <div className="mb-4">
-                  <label
-                    className={`block text-gray-800 ${errors.address ? "text-red-600" : ""}`}
-                  >
+                  <label className={`block text-gray-800 ${errors.address ? "text-red-600" : ""}`}>
                     Address
                   </label>
                   <input
@@ -117,26 +103,20 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
                       errors.address ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
                     }`}
                   />
-                  {errors.address && (
-                    <span className="text-red-600 text-sm">{errors.address.message}</span>
-                  )}
+                  {errors.address && <span className="text-red-600 text-sm">{errors.address.message}</span>}
                 </div>
                 <div className="mb-4">
-                  <label
-                    className={`block text-gray-800 ${errors.phoneNumber ? "text-red-600" : ""}`}
-                  >
-                    Phone Number
+                  <label className={`block text-gray-800 ${errors.email ? "text-red-600" : ""}`}>
+                    Email
                   </label>
                   <input
-                    {...register("phoneNumber")}
-                    type="tel"
+                    {...register("email")}
+                    type="email"
                     className={`w-full p-2 border rounded-md bg-white/30 placeholder-gray-500 focus:outline-none focus:ring-2 ${
-                      errors.phoneNumber ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
+                      errors.email ? "border-red-600 focus:ring-red-600" : "focus:ring-gray-900"
                     }`}
                   />
-                  {errors.phoneNumber && (
-                    <span className="text-red-600 text-sm">{errors.phoneNumber.message}</span>
-                  )}
+                  {errors.email && <span className="text-red-600 text-sm">{errors.email.message}</span>}
                 </div>
 
                 <div className="mt-6 flex space-x-6">
@@ -160,11 +140,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose }) => {
         )}
       </AnimatePresence>
 
-      <ConfirmationModal
-        isOpen={isConfirmOpen}
-        onClose={() => setIsConfirmOpen(false)}
-        onConfirm={confirmOrder}
-      />
+      <ConfirmationModal isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)} onConfirm={confirmOrder} />
     </>
   );
 };
