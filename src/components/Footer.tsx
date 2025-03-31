@@ -23,9 +23,9 @@ const Footer: React.FC = () => {
             <Image
               src="/logo/logo.png"
               alt="PowerHaus Logo"
-              width={200}
-              height={110}
-              className="cursor-pointer object-contain"
+              width={150}
+              height={80}
+              className="cursor-pointer object-contain max-w-[150px] max-h-[80px]"
             />
           </Link>
         </div>

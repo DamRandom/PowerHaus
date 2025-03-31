@@ -38,15 +38,15 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white py-4 px-8 shadow-lg w-full z-50 sticky top-0 flex items-center justify-between">
+    <nav className="bg-gray-900 text-white py-3 px-6 shadow-lg w-full z-50 sticky top-0 flex items-center justify-between">
       <div className="flex items-center">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo/logo.png"
             alt="PowerHaus Logo"
-            width={180}
-            height={100}
-            className="cursor-pointer object-contain"
+            width={120} 
+            height={60}
+            className="cursor-pointer object-contain max-w-[120px] max-h-[60px]"
           />
         </Link>
       </div>
@@ -71,8 +71,8 @@ const Navbar: React.FC = () => {
           <Image
             src="/icons/shopping-cart.png"
             alt="Shopping Cart"
-            width={44}
-            height={24}
+            width={40}
+            height={40}
             className="cursor-pointer hover:text-orange-500 transition"
           />
         </Link>
