@@ -1,198 +1,465 @@
 {
-    "Groceries": {
-      "Fruits": [
-        {
-          "id": 1,
-          "name": "Apple",
-          "category": "Groceries",
-          "subCategory": "Fruits",
-          "price": 1.99,
-          "image": "/products/apple.jpg",
-          "description": "Fresh red apples, handpicked for quality.",
-          "weight": "0.5 kg",
-          "organic": true
-        },
-        {
-          "id": 2,
-          "name": "Banana",
-          "category": "Groceries",
-          "subCategory": "Fruits",
-          "price": 0.99,
-          "image": "/products/banana.jpg",
-          "description": "Sweet bananas rich in potassium.",
-          "weight": "0.4 kg",
-          "organic": false
-        }
-      ],
-      "Vegetables": [
-        {
-          "id": 3,
-          "name": "Carrot",
-          "category": "Groceries",
-          "subCategory": "Vegetables",
-          "price": 2.49,
-          "image": "/products/carrot.jpg",
-          "description": "Fresh carrots, perfect for salads and soups.",
-          "weight": "0.3 kg",
-          "organic": true
-        },
-        {
-          "id": 4,
-          "name": "Broccoli",
-          "category": "Groceries",
-          "subCategory": "Vegetables",
-          "price": 3.49,
-          "image": "/products/broccoli.jpg",
-          "description": "Fresh broccoli, high in vitamins.",
-          "weight": "0.6 kg",
-          "organic": false
-        }
-      ]
-    },
-    "Electronics": {
-      "Mobile Phones": [
-        {
-          "id": 5,
-          "name": "Smartphone Pro",
-          "category": "Electronics",
-          "subCategory": "Mobile Phones",
-          "price": 799,
-          "image": "/products/smartphone.jpg",
-          "description": "High-performance smartphone with a stunning display.",
-          "storage": "128 GB",
-          "battery": "4000 mAh",
-          "brand": "TechBrand"
-        }
-      ],
-      "Refrigerators": [
-        {
-          "id": 6,
-          "name": "FridgeMaster 3000",
-          "category": "Electronics",
-          "subCategory": "Refrigerators",
-          "price": 1299,
-          "image": "/products/fridge.jpg",
-          "description": "Energy-efficient refrigerator with a large capacity.",
-          "capacity": "500 L",
-          "energyRating": "A+",
-          "brand": "HomeTech"
-        }
-      ]
-    },
-    "Home & Kitchen": {
-      "Cookware": [
-        {
-          "id": 7,
-          "name": "Non-stick Pan",
-          "category": "Home & Kitchen",
-          "subCategory": "Cookware",
-          "price": 29.99,
-          "image": "/products/pan.jpg",
-          "description": "Durable non-stick frying pan, perfect for everyday cooking.",
-          "material": "Aluminum",
-          "diameter": "28 cm",
-          "brand": "CookMate"
-        }
-      ],
-      "Furniture": [
-        {
-          "id": 8,
-          "name": "Wooden Coffee Table",
-          "category": "Home & Kitchen",
-          "subCategory": "Furniture",
-          "price": 199,
-          "image": "/products/coffeetable.jpg",
-          "description": "Stylish wooden coffee table with a modern design.",
-          "material": "Wood",
-          "dimensions": "120 x 60 x 45 cm",
-          "brand": "FurniTech"
-        }
-      ]
-    },
-    "Health & Beauty": {
-      "Skin Care": [
-        {
-          "id": 9,
-          "name": "Moisturizing Cream",
-          "category": "Health & Beauty",
-          "subCategory": "Skin Care",
-          "price": 24.99,
-          "image": "/products/cream.jpg",
-          "description": "Hydrating cream with natural ingredients to nourish the skin.",
-          "ingredients": "Aloe Vera, Vitamin E",
-          "brand": "BeautyGlow"
-        }
-      ],
-      "Hair Care": [
-        {
-          "id": 10,
-          "name": "L'Oreal Elvive Total Repair 5 Set",
-          "category": "Health & Beauty",
-          "subCategory": "Hair Care",
-          "price": 16.99,
-          "image": "/products/shampoo.jpg",
-          "description": "Shampoo & conditioner for damaged hair, with Repair Concentrate and Protein.",
-          "volume": "828 ml (Pack of 2)",
-          "brand": "L'Oreal Paris"
-        }        
-      ]
-    },
-    "Gardening": {
-      "Plants": [
-        {
-          "id": 11,
-          "name": "Succulent Plant",
-          "category": "Gardening",
-          "subCategory": "Plants",
-          "price": 12.99,
-          "image": "/products/succulent.jpg",
-          "description": "Low-maintenance succulent plant, perfect for home decor.",
-          "potSize": "15 cm",
-          "brand": "GreenLeaf"
-        }
-      ],
-      "Tools": [
-        {
-          "id": 12,
-          "name": "Garden Trowel",
-          "category": "Gardening",
-          "subCategory": "Tools",
-          "price": 8.99,
-          "image": "/products/trowel.jpg",
-          "description": "Sturdy trowel for easy digging and planting.",
-          "material": "Stainless Steel",
-          "length": "30 cm",
-          "brand": "GardenPro"
-        }
-      ]
-    },
-    "Cleaning Supplies": {
-      "Household Cleaners": [
-        {
-          "id": 13,
-          "name": "Multi-surface Cleaner",
-          "category": "Cleaning Supplies",
-          "subCategory": "Household Cleaners",
-          "price": 5.99,
-          "image": "/products/cleaner.jpg",
-          "description": "Effective cleaner for all surfaces, removes stains and dirt.",
-          "volume": "500 ml",
-          "brand": "CleanMaster"
-        }
-      ],
-      "Laundry": [
-        {
-          "id": 14,
-          "name": "Laundry Detergent",
-          "category": "Cleaning Supplies",
-          "subCategory": "Laundry",
-          "price": 8.99,
-          "image": "/products/detergent.jpg",
-          "description": "Powerful laundry detergent for fresh and clean clothes.",
-          "volume": "1 L",
-          "brand": "FreshClean"
-        }
-      ]
-    }
+  "Electronics": {
+    "Smartphones": [
+      {
+        "id": 1,
+        "name": "iPhone 15 Pro Max",
+        "category": "Electronics",
+        "subCategory": "Smartphones",
+        "price": 1199,
+        "image": "/products/iphone15promax.png",
+        "description": "Apple flagship smartphone with A17 Pro chip, 6.7-inch Super Retina XDR display, and titanium frame.",
+        "storage": "256 GB",
+        "battery": "4422 mAh",
+        "brand": "Apple"
+      }
+    ],
+    "Laptops": [
+      {
+        "id": 2,
+        "name": "Dell XPS 15",
+        "category": "Electronics",
+        "subCategory": "Laptops",
+        "price": 1799,
+        "image": "/products/dellxps15.png",
+        "description": "Premium laptop with 15.6-inch 4K OLED display, Intel Core i7-13700H, and NVIDIA RTX 4070 GPU.",
+        "ram": "32 GB",
+        "storage": "1 TB SSD",
+        "brand": "Dell"
+      }
+    ],
+    "Tablets": [
+      {
+        "id": 3,
+        "name": "Samsung Galaxy Tab S9 Ultra",
+        "category": "Electronics",
+        "subCategory": "Tablets",
+        "price": 1199,
+        "image": "/products/galaxytabs9ultra.png",
+        "description": "14.6-inch Dynamic AMOLED 2X display, Snapdragon 8 Gen 2 processor, and S Pen included.",
+        "storage": "512 GB",
+        "battery": "11200 mAh",
+        "brand": "Samsung"
+      }
+    ],
+    "Headphones": [
+      {
+        "id": 4,
+        "name": "Sony WH-1000XM5",
+        "category": "Electronics",
+        "subCategory": "Headphones",
+        "price": 399,
+        "image": "/products/sonywh1000xm5.png",
+        "description": "Over-ear wireless noise-canceling headphones with 30-hour battery life.",
+        "type": "Over-Ear",
+        "battery": "30 hours",
+        "brand": "Sony"
+      }
+    ],
+    "Wearables (Smartwatches, Fitness Bands)": [
+      {
+        "id": 5,
+        "name": "Apple Watch Series 9",
+        "category": "Electronics",
+        "subCategory": "Wearables (Smartwatches, Fitness Bands)",
+        "price": 399,
+        "image": "/products/applewatchseries9.jpg",
+        "description": "Smartwatch with always-on Retina display, advanced health sensors, and GPS.",
+        "size": "45 mm",
+        "battery": "18 hours",
+        "brand": "Apple"
+      }
+    ]
+  },
+  "Kitchen Appliances": {
+    "Refrigerators": [
+      {
+        "id": 6,
+        "name": "LG InstaView Door-in-Door Refrigerator",
+        "category": "Kitchen Appliances",
+        "subCategory": "Refrigerators",
+        "price": 2299,
+        "image": "/products/lginstaview.jpg",
+        "description": "36-inch French Door refrigerator with InstaView glass panel and smart cooling.",
+        "capacity": "27 cu. ft.",
+        "energyRating": "A++",
+        "brand": "LG"
+      }
+    ],
+    "Microwaves": [
+      {
+        "id": 7,
+        "name": "Panasonic NN-SN966S",
+        "category": "Kitchen Appliances",
+        "subCategory": "Microwaves",
+        "price": 249,
+        "image": "/products/panasonicmicrowave.jpg",
+        "description": "2.2 cu. ft. countertop microwave with inverter technology and 1250W power.",
+        "capacity": "2.2 cu. ft.",
+        "brand": "Panasonic"
+      }
+    ],
+    "Electric Ovens": [
+      {
+        "id": 8,
+        "name": "Breville Smart Oven Air Fryer Pro",
+        "category": "Kitchen Appliances",
+        "subCategory": "Electric Ovens",
+        "price": 399,
+        "image": "/products/brevilleoven.jpg",
+        "description": "Convection oven with 13 cooking functions including air fry, roast, and dehydrate.",
+        "capacity": "1 cu. ft.",
+        "brand": "Breville"
+      }
+    ],
+    "Air Fryers": [
+      {
+        "id": 9,
+        "name": "Ninja Foodi 6-in-1 Air Fryer",
+        "category": "Kitchen Appliances",
+        "subCategory": "Air Fryers",
+        "price": 169,
+        "image": "/products/ninjaairfryer.jpg",
+        "description": "Large capacity air fryer with dual baskets and multiple cooking modes.",
+        "capacity": "8 qt.",
+        "brand": "Ninja"
+      }
+    ],
+    "Blenders": [
+      {
+        "id": 10,
+        "name": "Vitamix A3500 Ascent Series",
+        "category": "Kitchen Appliances",
+        "subCategory": "Blenders",
+        "price": 599,
+        "image": "/products/vitamix.jpg",
+        "description": "Professional-grade blender with touchscreen controls and self-cleaning function.",
+        "capacity": "64 oz",
+        "brand": "Vitamix"
+      }
+    ],
+    "Coffee Makers": [
+      {
+        "id": 11,
+        "name": "Keurig K-Elite",
+        "category": "Kitchen Appliances",
+        "subCategory": "Coffee Makers",
+        "price": 189,
+        "image": "/products/keurigkelite.jpg",
+        "description": "Single-serve coffee maker with strong brew and iced coffee settings.",
+        "capacity": "75 oz",
+        "brand": "Keurig"
+      }
+    ],
+    "Toasters": [
+      {
+        "id": 12,
+        "name": "Cuisinart CPT-180P1",
+        "category": "Kitchen Appliances",
+        "subCategory": "Toasters",
+        "price": 79,
+        "image": "/products/cuisinarttoaster.jpg",
+        "description": "4-slice toaster with dual control panels and custom shade settings.",
+        "slots": 4,
+        "brand": "Cuisinart"
+      }
+    ],
+    "Electric Kettles": [
+      {
+        "id": 13,
+        "name": "Fellow Stagg EKG Electric Kettle",
+        "category": "Kitchen Appliances",
+        "subCategory": "Electric Kettles",
+        "price": 169,
+        "image": "/products/fellowkettle.jpg",
+        "description": "Precision pour-over kettle with variable temperature control.",
+        "capacity": "0.9 L",
+        "brand": "Fellow"
+      }
+    ]
+  },
+  "Climate Control": {
+    "Air Conditioners": [
+      {
+        "id": 14,
+        "name": "Daikin Inverter Split AC FTKM Series",
+        "category": "Climate Control",
+        "subCategory": "Air Conditioners",
+        "price": 899,
+        "image": "/products/daikinac.jpg",
+        "description": "1.5-ton split air conditioner with inverter compressor, energy-efficient cooling, and quiet operation.",
+        "capacity": "18000 BTU",
+        "energyRating": "A++",
+        "brand": "Daikin"
+      }
+    ],
+    "Fans": [
+      {
+        "id": 15,
+        "name": "Dyson AM07 Tower Fan",
+        "category": "Climate Control",
+        "subCategory": "Fans",
+        "price": 399,
+        "image": "/products/dysonfan.jpg",
+        "description": "Bladeless tower fan with Air Multiplier technology for smooth airflow and quiet performance.",
+        "height": "100 cm",
+        "brand": "Dyson"
+      }
+    ],
+    "Electric Heaters": [
+      {
+        "id": 16,
+        "name": "De'Longhi Oil-Filled Radiator TRD40615E",
+        "category": "Climate Control",
+        "subCategory": "Electric Heaters",
+        "price": 149,
+        "image": "/products/delonghiheater.jpg",
+        "description": "1500W oil-filled radiator heater with adjustable thermostat and safety features.",
+        "power": "1500 W",
+        "brand": "De'Longhi"
+      }
+    ],
+    "Dehumidifiers": [
+      {
+        "id": 17,
+        "name": "Frigidaire FFAD5033W1",
+        "category": "Climate Control",
+        "subCategory": "Dehumidifiers",
+        "price": 299,
+        "image": "/products/frigidairedehumidifier.jpg",
+        "description": "50-pint capacity dehumidifier with continuous drain option and custom humidity control.",
+        "capacity": "50 pints/day",
+        "brand": "Frigidaire"
+      }
+    ]
+  },
+  "Lighting": {
+    "LED Lamps": [
+      {
+        "id": 18,
+        "name": "Philips Hue Go Table Lamp",
+        "category": "Lighting",
+        "subCategory": "LED Lamps",
+        "price": 89,
+        "image": "/products/philipslamp.jpg",
+        "description": "Portable LED table lamp with adjustable brightness and color settings.",
+        "lumens": "520 lm",
+        "brand": "Philips"
+      }
+    ],
+    "Smart Bulbs": [
+      {
+        "id": 19,
+        "name": "Philips Hue White and Color Ambiance",
+        "category": "Lighting",
+        "subCategory": "Smart Bulbs",
+        "price": 49,
+        "image": "/products/philipshuebulb.jpg",
+        "description": "Smart LED bulb with 16 million colors and voice control compatibility.",
+        "wattage": "10 W",
+        "brand": "Philips"
+      }
+    ],
+    "LED Strips": [
+      {
+        "id": 20,
+        "name": "Govee RGBIC LED Strip Lights",
+        "category": "Lighting",
+        "subCategory": "LED Strips",
+        "price": 39,
+        "image": "/products/goveeledstrip.jpg",
+        "description": "16.4 ft RGBIC LED strip lights with app and voice control, multiple scene modes.",
+        "length": "5 m",
+        "brand": "Govee"
+      }
+    ],
+    "Desk Lamps": [
+      {
+        "id": 21,
+        "name": "BenQ e-Reading LED Desk Lamp",
+        "category": "Lighting",
+        "subCategory": "Desk Lamps",
+        "price": 229,
+        "image": "/products/benqlamp.jpg",
+        "description": "Adjustable LED desk lamp with wide coverage and brightness adjustment for reading.",
+        "lumens": "900 lm",
+        "brand": "BenQ"
+      }
+    ]
+  },
+  "Power Tools": {
+    "Electric Drills": [
+      {
+        "id": 22,
+        "name": "DeWalt DCD791D2 Cordless Drill",
+        "category": "Power Tools",
+        "subCategory": "Electric Drills",
+        "price": 179,
+        "image": "/products/dewaltdrill.jpg",
+        "description": "20V MAX XR Li-Ion brushless cordless drill with 2-speed transmission.",
+        "voltage": "20 V",
+        "brand": "DeWalt"
+      }
+    ],
+    "Electric Screwdrivers": [
+      {
+        "id": 23,
+        "name": "Bosch GO 2 Cordless Screwdriver",
+        "category": "Power Tools",
+        "subCategory": "Electric Screwdrivers",
+        "price": 59,
+        "image": "/products/boschscrewdriver.jpg",
+        "description": "6.35 mm cordless screwdriver with torque adjustment and USB charging.",
+        "voltage": "3.6 V",
+        "brand": "Bosch"
+      }
+    ],
+    "Electric Saws": [
+      {
+        "id": 24,
+        "name": "Makita XSS02Z Circular Saw",
+        "category": "Power Tools",
+        "subCategory": "Electric Saws",
+        "price": 129,
+        "image": "/products/makitasaw.jpg",
+        "description": "18V LXT lithium-ion cordless circular saw with 6-1/2-inch blade.",
+        "bladeDiameter": "165 mm",
+        "brand": "Makita"
+      }
+    ],
+    "Soldering Irons": [
+      {
+        "id": 25,
+        "name": "Weller WLC100 Soldering Station",
+        "category": "Power Tools",
+        "subCategory": "Soldering Irons",
+        "price": 59,
+        "image": "/products/wellersolder.jpg",
+        "description": "40W soldering station with variable temperature control (5–40 watts).",
+        "power": "40 W",
+        "brand": "Weller"
+      }
+    ],
+    "Sanders": [
+      {
+        "id": 26,
+        "name": "Black+Decker BDERO100 Orbital Sander",
+        "category": "Power Tools",
+        "subCategory": "Sanders",
+        "price": 49,
+        "image": "/products/blackdeckersander.jpg",
+        "description": "5-inch random orbital sander with hook-and-loop system and dust-sealed switch.",
+        "padSize": "125 mm",
+        "brand": "Black+Decker"
+      }
+    ]
+  },
+  "Home Entertainment": {
+    "Televisions": [
+      {
+        "id": 27,
+        "name": "Samsung QN90C Neo QLED 4K TV",
+        "category": "Home Entertainment",
+        "subCategory": "Televisions",
+        "price": 1499,
+        "image": "/products/samsungqn90c.jpg",
+        "description": "65-inch Neo QLED TV with Quantum HDR 32x and anti-glare screen.",
+        "resolution": "4K",
+        "brand": "Samsung"
+      }
+    ],
+    "Projectors": [
+      {
+        "id": 28,
+        "name": "Epson Home Cinema 5050UB",
+        "category": "Home Entertainment",
+        "subCategory": "Projectors",
+        "price": 2999,
+        "image": "/products/epson5050ub.jpg",
+        "description": "4K PRO-UHD 3LCD projector with HDR support and motorized lens control.",
+        "resolution": "4K",
+        "brand": "Epson"
+      }
+    ],
+    "Bluetooth Speakers": [
+      {
+        "id": 29,
+        "name": "JBL Charge 5",
+        "category": "Home Entertainment",
+        "subCategory": "Bluetooth Speakers",
+        "price": 179,
+        "image": "/products/jblcharge5.jpg",
+        "description": "Portable waterproof Bluetooth speaker with 20 hours of playtime.",
+        "battery": "20 hours",
+        "brand": "JBL"
+      }
+    ],
+    "Soundbars": [
+      {
+        "id": 30,
+        "name": "Sonos Arc",
+        "category": "Home Entertainment",
+        "subCategory": "Soundbars",
+        "price": 899,
+        "image": "/products/sonosarc.jpg",
+        "description": "Premium smart soundbar with Dolby Atmos and voice control.",
+        "channels": "5.0.2",
+        "brand": "Sonos"
+      }
+    ]
+  },
+  "Personal Care Electronics": {
+    "Hair Dryers": [
+      {
+        "id": 31,
+        "name": "Dyson Supersonic Hair Dryer",
+        "category": "Personal Care Electronics",
+        "subCategory": "Hair Dryers",
+        "price": 429,
+        "image": "/products/dysonsupersonic.jpg",
+        "description": "High-speed hair dryer with intelligent heat control and magnetic attachments.",
+        "power": "1600 W",
+        "brand": "Dyson"
+      }
+    ],
+    "Hair Straighteners": [
+      {
+        "id": 32,
+        "name": "GHD Platinum+ Styler",
+        "category": "Personal Care Electronics",
+        "subCategory": "Hair Straighteners",
+        "price": 279,
+        "image": "/products/ghdplatinum.jpg",
+        "description": "Advanced hair straightener with predictive technology for consistent styling.",
+        "plateWidth": "26 mm",
+        "brand": "GHD"
+      }
+    ],
+    "Electric Shavers": [
+      {
+        "id": 33,
+        "name": "Philips Norelco 9000 Series",
+        "category": "Personal Care Electronics",
+        "subCategory": "Electric Shavers",
+        "price": 199,
+        "image": "/products/philipsnorelco9000.jpg",
+        "description": "Wet and dry electric shaver with SkinIQ technology and precision blades.",
+        "battery": "60 minutes",
+        "brand": "Philips"
+      }
+    ],
+    "Electric Toothbrushes": [
+      {
+        "id": 34,
+        "name": "Oral-B iO Series 9",
+        "category": "Personal Care Electronics",
+        "subCategory": "Electric Toothbrushes",
+        "price": 299,
+        "image": "/products/oralbio9.jpg",
+        "description": "Rechargeable electric toothbrush with AI tracking and multiple brushing modes.",
+        "battery": "14 days",
+        "brand": "Oral-B"
+      }
+    ]
   }
-  
+}
